@@ -20,9 +20,9 @@
             <p>Nombre de produits: <?= $commande->getNbProduits();?></p>
             <ul>
 
-                <li><?=$commande->getTablettes()?>:Tablettes</li>
-                <li><?=$commande->getPc()?>:PC</li>
-                <li><?=$commande->getPortable()?>:Portables</li>
+                <li><?=$commande->getTablettes()?> : Tablettes</li>
+                <li><?=$commande->getPc()?> : PC</li>
+                <li><?=$commande->getPortable()?> : Portables</li>
             </ul>
             <p>Le total de votre commande est de : <?=$commande->getPrix()?>€ (<?=$commande->getPrixHT()?>€ HT)</p>
             <p>Adresse : <i><?=$commande->getAdresse();?></i></p>
