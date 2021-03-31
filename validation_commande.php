@@ -15,7 +15,7 @@
 <body>
     <main>
         <section>
-            <h2>Votre Commande du <?= date('d/m/Y, H:i');?></h2>
+            <h2>Votre Commande du <?=$_SESSION['time']?></h2>
             <h3>Détail de votre commande:</h3>
             <p>Nombre de produits: <?= $commande->getNbProduits();?></p>
             <ul>

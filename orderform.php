@@ -31,7 +31,7 @@
     if(validerPanier($tablettes, $pc, $portable) && testAdresse($adresse)){
       $commande = new Produit($tablettes, $pc, $portable, $adresse);
       $_SESSION['commande'] = $commande;
-      $_SESSION['adresse'] = $adresse;
+      $_SESSION['time'] = date('d/m/Y, H:i');
       header('Location: validation_commande.php');
     }
 
