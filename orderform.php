@@ -34,6 +34,9 @@
       $_SESSION['time'] = date('d/m/Y, H:i');
       header('Location: validation_commande.php');
     }
+    if(testTouslesProduits($tablettes, $pc, $portable) && !validerPanier($tablettes,$pc,$portable)){
+      $panierVide = "Votre panier est vide";
+    }
 
   }
   function testProduit($produit){
@@ -43,9 +46,12 @@
     return $adresse !== "";
   }
   function validerPanier($tablettes, $pc, $portable){
-    $checkPanierVide = ($tablettes+$pc+$portable)!=0;
+    $checkPanierVide = $tablettes+$pc+$portable != 0;
     $checkLimite = testProduit($tablettes) && testProduit($pc) && testProduit($portable);
     return $checkLimite && $checkPanierVide;
+  }
+  function testTouslesProduits($tablettes, $pc, $portable){
+    return testProduit($tablettes) && testProduit($pc) && testProduit($portable);
   }
 
 ?>
@@ -66,7 +72,11 @@
         <td><label for="tablettes">Tablettes</label></td>
         <td>
           <input type="number" name="tablettes" id="tablettes" value="<?php echo $tablettes;?>" autofocus autocomplete="off">
-          <span class="error"><?php if(!testProduit($tablettes)){echo $produitLimite;}?></span>
+          <span class="error">
+            <?php 
+              if(!testProduit($tablettes)){echo $produitLimite;}echo $panierVide;
+            ?>
+          </span>
         </td>
       </tr>
       <tr>
